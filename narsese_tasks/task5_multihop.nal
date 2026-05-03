@@ -1,0 +1,39 @@
+% ============================================================
+% Task 5: Multi-hop Compound Reasoning
+% Requires deduction, induction, AND abduction in sequence.
+% Designed to stress resource limits maximally.
+%
+% Scenario: Reasoning about animal taxonomy and behaviour
+% under full NAL inference modes
+% ============================================================
+
+% --- Deductive chain component ---
+<animal --> livingThing>. %{1.00 0.90}
+<mammal --> animal>. %{1.00 0.90}
+<dog --> mammal>. %{1.00 0.90}
+
+% --- Inductive component ---
+<fido --> dog>. %{1.00 0.90}
+<fido --> canBark>. %{1.00 0.90}
+<rex --> dog>. %{1.00 0.90}
+<rex --> canBark>. %{1.00 0.90}
+
+% --- Abductive component ---
+% Rule: barking implies a dog is nearby
+<barking --> dogNearby>. %{0.90 0.85}
+% Observation: there is barking
+<event --> barking>. %{1.00 0.90}
+
+% --- Additional linking facts ---
+<livingThing --> hasMetabolism>. %{1.00 0.85}
+<dog --> canBark>. %{0.90 0.80}
+
+% Multi-hop query: Is the observed event related to a living thing nearby?
+<event --> dogNearby>?
+<dog --> livingThing>?
+
+% Expected: Requires combining:
+%   dog-->mammal-->animal-->livingThing (deduction, 3-hop)
+%   fido/rex canBark => dog-->canBark (induction)
+%   barking=>dogNearby + event-->barking => event-->dogNearby (deduction+abduction)
+% Ground-truth: f* ~ 0.65, c* ~ 0.35 (most demanding task)

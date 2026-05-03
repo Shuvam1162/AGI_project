@@ -1,0 +1,6 @@
+task,nstar_nc,nstar_nm
+task1_deductive,10,25
+task2_inductive,10,25
+task3_revision,10,25
+task4_abductive,10,25
+task5_multihop,15,25

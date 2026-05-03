@@ -1,0 +1,25 @@
+% ============================================================
+% Task 1: Deductive Chain (3-step syllogism)
+% Tests whether confidence propagates correctly through a
+% sequence of inheritance statements under resource pressure.
+%
+% Inference mode: Deduction (NAL-1)
+% Ground truth target: <A --> C> with high f, c ~ f*c1*c2*c3
+% ============================================================
+
+% Step 1: A is a kind of B
+<A --> B>. %{1.00 0.90}
+
+% Step 2: B is a kind of C
+<B --> C>. %{1.00 0.90}
+
+% Step 3: C is a kind of D
+<C --> D>. %{1.00 0.90}
+
+% Query: What is the relationship between A and D?
+<A --> D>?
+
+% Expected: NARS should derive <A --> D> via:
+%   A-->B + B-->C => A-->C (deduction)
+%   A-->C + C-->D => A-->D (deduction)
+% Ground-truth truth value: f*=1.0, c* ~ 0.9^3 / (1 + 0.9^3*(1/k-1)) ~ 0.73

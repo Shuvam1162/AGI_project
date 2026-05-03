@@ -1,0 +1,24 @@
+% ============================================================
+% Task 2: Inductive Generalisation
+% Tests whether NARS can form a general rule from two positive
+% instances under resource pressure.
+%
+% Inference mode: Induction (NAL-2)
+% Ground truth: <bird --> canFly> with moderate f and c
+% ============================================================
+
+% Instance 1: Robin is a bird and robin can fly
+<robin --> bird>. %{1.00 0.90}
+<robin --> canFly>. %{1.00 0.90}
+
+% Instance 2: Eagle is a bird and eagle can fly
+<eagle --> bird>. %{1.00 0.90}
+<eagle --> canFly>. %{1.00 0.90}
+
+% Query: Is there a general rule that birds can fly?
+<bird --> canFly>?
+
+% Expected: NARS should induce <bird --> canFly> via:
+%   robin-->bird + robin-->canFly => bird-->canFly (induction)
+%   eagle-->bird + eagle-->canFly => bird-->canFly (induction + revision)
+% Ground-truth: f* ~ 0.80, c* ~ 0.45 (weaker than deduction)

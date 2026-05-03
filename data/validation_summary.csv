@@ -1,0 +1,6 @@
+task,sim_profile,engine_profile,profile_agrees,pearson_r,pearson_p,sim_nstar_nc,engine_nstar_nc,nstar_ratio
+task1_deductive,SMOOTH,SMOOTH,True,-0.736,0.0375,374,10,0.03
+task2_inductive,SMOOTH,SMOOTH,True,-0.646,0.0838,952,10,0.01
+task3_revision,SMOOTH,SMOOTH,True,-0.621,0.1005,1623,10,0.01
+task4_abductive,CLIFF,SMOOTH,False,-0.833,0.0103,400,10,0.03
+task5_multihop,CLIFF,SMOOTH,False,-0.725,0.0417,952,15,0.02

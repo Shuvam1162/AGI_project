@@ -1,0 +1,27 @@
+% ============================================================
+% Task 4: Abductive Hypothesis Formation
+% Tests whether NARS generates a plausible explanatory
+% hypothesis from an observed effect and a known rule.
+%
+% Inference mode: Abduction (NAL-2)
+% Ground truth: abduced cause with weakened confidence
+% ============================================================
+
+% Known rule: Wet grass implies it rained
+<wetGrass --> rain>. %{1.00 0.90}
+
+% Observed effect: The grass is wet
+<observation --> wetGrass>. %{1.00 0.90}
+
+% Query: Did it rain? (abductive hypothesis)
+<observation --> rain>?
+
+% Supporting context: grass gets wet when it rains
+<grass --> wetGrass>. %{0.85 0.80}
+
+% Counter-context: sprinklers also wet grass
+<sprinkler --> wetGrass>. %{0.80 0.70}
+
+% Expected: NARS should abduct <observation --> rain> with:
+%   Abduction is weaker than deduction
+%   f* ~ 0.70, c* ~ 0.40

@@ -1,0 +1,6 @@
+task,n_star_nc,tau
+task1_deductive,374,0.5
+task2_inductive,952,0.5
+task3_revision,1623,0.5
+task4_abductive,400,0.5
+task5_multihop,952,0.5

@@ -1,0 +1,25 @@
+% ============================================================
+% Task 3: Belief Revision (Contradictory Evidence)
+% Tests whether NARS correctly revises a prior belief when
+% conflicting evidence is presented.
+%
+% Inference mode: Revision (NAL-1)
+% Ground truth: revised belief should have intermediate f, moderate c
+% ============================================================
+
+% Prior belief: Tom is likely a cat (high confidence)
+<tom --> cat>. %{0.90 0.90}
+
+% Conflicting evidence: tom is probably NOT a cat
+<tom --> cat>. %{0.10 0.80}
+
+% Query: What is the current belief about tom being a cat?
+<tom --> cat>?
+
+% Expected: NARS revision formula:
+%   f_rev = (f1*c1 + f2*c2) / (c1 + c2)
+%         = (0.9*0.9 + 0.1*0.8) / (0.9 + 0.8)
+%         = (0.81 + 0.08) / 1.7 = 0.524
+%   c_rev = (c1 + c2) / (c1 + c2 + 1)
+%         = 1.7 / 2.7 = 0.630
+% Ground-truth: f* ~ 0.52, c* ~ 0.63

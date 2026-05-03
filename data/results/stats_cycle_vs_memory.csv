@@ -1,0 +1,6 @@
+task,statistic,p_value,significant,interpretation
+task1_deductive,3246.0,0.8766,False,No significant difference between cycle and memory degradation
+task2_inductive,3228.0,0.925227,False,No significant difference between cycle and memory degradation
+task3_revision,3496.0,0.313249,False,No significant difference between cycle and memory degradation
+task4_abductive,3494.0,0.316532,False,No significant difference between cycle and memory degradation
+task5_multihop,3208.0,0.97958,False,No significant difference between cycle and memory degradation
